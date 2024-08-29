@@ -45,16 +45,16 @@ public class ApiClient {
 
         String jsonString = gson.toJson(requestObject);
 
-        // Print the JSON object that will be sent
+    
         System.out.println("Enviando para a API: " + jsonString);
 
         try (OutputStream os = conn.getOutputStream()) {
             byte[] input = jsonString.getBytes(StandardCharsets.UTF_8);
             os.write(input, 0, input.length);
         } catch (IOException e) {
-            // Lidar com exceções de entrada/saída que podem ocorrer
+         
             System.err.println("Ocorreu um erro ao tentar obter o OutputStream ou ao escrever dados: " + e.getMessage());
-            e.printStackTrace(); // Opcional: imprimir o stack trace para depuração
+            e.printStackTrace(); 
         }
 
         int responseCode = conn.getResponseCode();
@@ -69,9 +69,9 @@ public class ApiClient {
                 System.out.println("Resposta da API: " + response.toString());
                 System.out.println("Envio bem-sucedido.");
             } catch (IOException e) {
-                // Lidar com exceções de entrada/saída que podem ocorrer
+               
                 System.err.println("Ocorreu um erro ao tentar obter o InputStream ou ao ler dados: " + e.getMessage());
-                e.printStackTrace(); // Opcional: imprimir o stack trace para depuração
+                e.printStackTrace();
             }
         } else {
             try (InputStream is = conn.getErrorStream();
@@ -83,9 +83,9 @@ public class ApiClient {
                 }
                 System.out.println("Resposta da API: " + response.toString());
             } catch (IOException e) {
-                // Lidar com exceções de entrada/saída que podem ocorrer
+                
                 System.err.println("Ocorreu um erro ao tentar obter o InputStream de erro ou ao ler dados: " + e.getMessage());
-                e.printStackTrace(); // Opcional: imprimir o stack trace para depuração
+                e.printStackTrace(); 
             }
             System.out.println("Falha no envio. Código de resposta: " + responseCode);
         }
