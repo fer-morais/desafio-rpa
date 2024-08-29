@@ -30,15 +30,13 @@ public class FeriadoAutomation {
         System.out.println("Selenium Start Open");
         WebDriver driver;
 
-//        System.setProperty("webdriver.chrome.driver", "/home/felipe/Área de trabalho/desafio-rpa/drivers/chromedriver");
-//        this.driver = new ChromeDriver();
 
         // Configurar ChromeOptions
         ChromeOptions options = new ChromeOptions();
         System.out.println("Selenium Open chrome options");
 
         // Conectar ao Selenium Grid
-//        driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
+
         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
         System.out.println("Selenium Finish Open");
         return driver;
@@ -52,7 +50,7 @@ public class FeriadoAutomation {
     public List<Feriado> getFeriadosFromExcel() throws Exception {
         System.out.println("Selenium Start getFeriadosFromExcel");
         String excelFilePath = "/files/Projeto vaga Ambiental.xlsx";
-//        String excelFilePath = "/home/felipe/Área de trabalho/desafio-rpa/files/Projeto vaga Ambiental.xlsx";
+
         List<Feriado> feriados = new ArrayList<>();
         FileInputStream fis = new FileInputStream(new File(excelFilePath));
         Workbook workbook = new XSSFWorkbook(fis);
