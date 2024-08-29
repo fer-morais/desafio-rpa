@@ -144,7 +144,7 @@ public class FeriadoAutomation {
 
            
             } else {
-                // Handle other WebDriverExceptions
+               
                 System.out.println("Caught a WebDriverException: " + e.getMessage());
             }
 
@@ -155,8 +155,5 @@ public class FeriadoAutomation {
         return feriados;
     }
 
-//    public void close() {
-//        System.out.println("Selenium Close");
-//        driver.quit();
-//    }
+
 }
