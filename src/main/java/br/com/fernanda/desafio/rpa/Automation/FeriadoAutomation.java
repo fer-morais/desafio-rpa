@@ -38,8 +38,8 @@ public class FeriadoAutomation {
         System.out.println("Selenium Open chrome options");
 
         // Conectar ao Selenium Grid
-//        driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
-        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
+        driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
+//        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
         System.out.println("Selenium Finish Open");
         return driver;
     }

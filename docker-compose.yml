@@ -1,13 +1,20 @@
+networks:
+  web:
+    driver:  bridge
+  dbnet:
+    driver:  bridge
+
 services:
   selenium:
     image: selenium/standalone-chrome:latest
     environment:
       - SE_ENABLE_TRACING=false
     ports:
-      - "4444:4444" # Porta do Selenium Grid
-    dns:
-      - 8.8.8.8
-    network_mode: "host"
+      - "4444:4444"
+    networks:
+      - web
+    privileged: true
+    shm_size: 2g
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:4444/wd/hub/status" ]
       interval: 30s
@@ -30,9 +37,9 @@ services:
     environment:
       - SELENIUM_HOST=selenium
       - SELENIUM_PORT=4444
-    dns:
-      - 8.8.8.8
-    network_mode: "host"
+    networks:
+      - web
+      - dbnet
 
   postgresql:
     image: postgres
@@ -53,3 +60,5 @@ services:
       retries: 10
       start_period: 120s
     restart: always
+    networks:
+      - dbnet
