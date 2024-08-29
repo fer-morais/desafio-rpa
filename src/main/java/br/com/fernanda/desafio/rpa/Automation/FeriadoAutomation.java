@@ -30,8 +30,6 @@ public class FeriadoAutomation {
         System.out.println("Selenium Start Open");
         WebDriver driver;
 
-//        System.setProperty("webdriver.chrome.driver", "/home/felipe/Área de trabalho/desafio-rpa/drivers/chromedriver");
-//        this.driver = new ChromeDriver();
 
         // Configurar ChromeOptions
         ChromeOptions options = new ChromeOptions();
