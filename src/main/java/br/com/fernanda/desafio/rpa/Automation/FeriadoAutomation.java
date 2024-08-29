@@ -143,7 +143,7 @@ public class FeriadoAutomation {
                 // Handle the specific page crash error
                 System.out.println("Caught a page crash exception: " + e.getMessage());
 
-                // You might want to restart the WebDriver or perform other recovery actions here
+           
             } else {
                 // Handle other WebDriverExceptions
                 System.out.println("Caught a WebDriverException: " + e.getMessage());
