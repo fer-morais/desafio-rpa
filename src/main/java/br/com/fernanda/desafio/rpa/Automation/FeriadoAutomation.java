@@ -31,11 +31,10 @@ public class FeriadoAutomation {
         WebDriver driver;
 
 
-        // Configurar ChromeOptions
+
         ChromeOptions options = new ChromeOptions();
         System.out.println("Selenium Open chrome options");
 
-        // Conectar ao Selenium Grid
 
         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
         System.out.println("Selenium Finish Open");
@@ -110,7 +109,7 @@ public class FeriadoAutomation {
             }
 
             System.out.println("getFeriadosFromSite: Option Cidade");
-            WebElement cidadeDropdown = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#cidade"))); // visibilityOfElementLocated
+            WebElement cidadeDropdown = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#cidade"))); 
             List<WebElement> cidadeOptions = cidadeDropdown.findElements(By.tagName("option"));
             for (WebElement option : cidadeOptions) {
                 if (option.getText().equalsIgnoreCase(cidade)) {
@@ -120,7 +119,7 @@ public class FeriadoAutomation {
             }
 
             System.out.println("getFeriadosFromSite: Option Estado");
-            //        List<WebElement> feriadoElements = driver.findElements(By.className("style_lista_feriados"));
+      
             List<WebElement> feriadoElements = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("style_lista_feriados")));
             for (WebElement element : feriadoElements) {
                 String feriadoText = element.getText();
@@ -140,7 +139,7 @@ public class FeriadoAutomation {
             driver.quit();
         } catch (WebDriverException e) {
             if (e.getMessage().contains("session deleted because of page crash")) {
-                // Handle the specific page crash error
+               
                 System.out.println("Caught a page crash exception: " + e.getMessage());
 
            
