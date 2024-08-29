@@ -31,13 +31,13 @@ public class FeriadoAutomation {
         WebDriver driver;
 
 
-        // Configurar ChromeOptions
+
         ChromeOptions options = new ChromeOptions();
         System.out.println("Selenium Open chrome options");
 
-        // Conectar ao Selenium Grid
+
         driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
-//        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
+
         System.out.println("Selenium Finish Open");
         return driver;
     }
@@ -50,11 +50,11 @@ public class FeriadoAutomation {
     public List<Feriado> getFeriadosFromExcel() throws Exception {
         System.out.println("Selenium Start getFeriadosFromExcel");
         String excelFilePath = "/files/Projeto vaga Ambiental.xlsx";
-//        String excelFilePath = "/home/felipe/Área de trabalho/desafio-rpa/files/Projeto vaga Ambiental.xlsx";
+
         List<Feriado> feriados = new ArrayList<>();
         FileInputStream fis = new FileInputStream(new File(excelFilePath));
         Workbook workbook = new XSSFWorkbook(fis);
-        Sheet sheet = workbook.getSheetAt(0); // 0
+        Sheet sheet = workbook.getSheetAt(0);
 
         for (int r = 1; r <= sheet.getLastRowNum(); r++) {
             Row row = sheet.getRow(r);
@@ -120,7 +120,7 @@ public class FeriadoAutomation {
             }
 
             System.out.println("getFeriadosFromSite: Option Estado");
-            //        List<WebElement> feriadoElements = driver.findElements(By.className("style_lista_feriados"));
+
             List<WebElement> feriadoElements = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("style_lista_feriados")));
             for (WebElement element : feriadoElements) {
                 String feriadoText = element.getText();
@@ -140,12 +140,12 @@ public class FeriadoAutomation {
             driver.quit();
         } catch (WebDriverException e) {
             if (e.getMessage().contains("session deleted because of page crash")) {
-                // Handle the specific page crash error
+
                 System.out.println("Caught a page crash exception: " + e.getMessage());
 
-                // You might want to restart the WebDriver or perform other recovery actions here
+
             } else {
-                // Handle other WebDriverExceptions
+
                 System.out.println("Caught a WebDriverException: " + e.getMessage());
             }
 
@@ -156,8 +156,5 @@ public class FeriadoAutomation {
         return feriados;
     }
 
-//    public void close() {
-//        System.out.println("Selenium Close");
-//        driver.quit();
-//    }
+
 }

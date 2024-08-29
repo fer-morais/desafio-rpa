@@ -10,7 +10,7 @@ import java.util.List;
 public class DatabaseManager {
 
     private Connection connect() throws SQLException {
-//        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/root", "root", "fer67na");
+
         return DriverManager.getConnection("jdbc:postgresql://postgresql:5432/root", "root", "fer67na");
     }
 
